@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-with, initial-scale=1.0">
+    <title>Quantum Club - C. V. Raman Global University</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Body Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Container for inner section padding */
+        .container {
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        /* Color Variables */
+        :root {
+            --header-dark-blue: #1E2A6A;
+            --primary-color: #364A9E;
+            --primary-color-dark: #2f3e85;
+            --footer-color: #1e2a6a;
+            --hover-yellow: #FAC921;
+        }
+
+        /* Header and Navigation */
+        header {
+            background-color: var(--header-dark-blue);
+            color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-content {
+            padding: 1rem 0;
+            text-align: center;
+        }
+        .header-content h1 {
+            margin: 0;
+            font-size: 2.25rem;
+        }
+        .header-content p {
+            margin: 0;
+            font-size: 0.875rem;
+        }
+        nav {
+            background-color: var(--primary-color);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 0;
+            padding: 0.75rem 0;
+        }
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            font-size: large;
+            transition: .3s;
+            overflow: hidden;
+            padding: 15px 20px;
+            display: inline-block;
+        }
+
+        nav ul li a span {
+            letter-spacing: .1rem;
+            transition: .3s;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        nav ul li a span::before {
+            box-sizing: border-box;
+            position: absolute;
+            content: "";
+        }
+
+        nav ul li a:hover span,
+        nav ul li a:focus span {
+            color: var(--hover-yellow);
+        }
+
+        nav ul li a:hover span::before,
+        nav ul li a:focus span::before {
+            animation: chitchat linear both 1.2s;
+        }
+
+        @keyframes chitchat {
+            0% { content: "#"; }
+            5% { content: "."; }
+            10% { content: "^{"; }
+            15% { content: "-!"; }
+            20% { content: "#$_"; }
+            25% { content: "№:0"; }
+            30% { content: "#{+."; }
+            35% { content: "@}-?"; }
+            40% { content: "?{4@%"; }
+            45% { content: "=.,^!"; }
+            50% { content: "?2@%"; }
+            55% { content: "\;1}]"; }
+            60% { content: "?{%:%"; right: 0; }
+            65% { content: "|{f[4"; right: 0; }
+            70% { content: "{4%0%"; right: 0; }
+            75% { content: "'1_0<"; right: 0; }
+            80% { content: "{0%"; right: 0; }
+            85% { content: "]>'"; right: 0; }
+            90% { content: "4"; right: 0; }
+            95% { content: "2"; right: 0; }
+            100% { content: ""; right: 0; }
+        }
+
+        /* Main Content Wrapper */
+        .main-content-wrapper {
+            max-width: 1140px;
+            margin: 0 auto;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            background-color: #f8f9fa;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            height: 500px;
+            color: white;
+            background-image: url('qsn-header-image.webp');
+            background-size: cover;
+            background-position: center;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            bottom: 50%;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+        }
+        .hero-overlay h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .hero-overlay p {
+            font-size: 1.50rem;
+        }
+        .welcome-section {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 50%;
+            background-image: url('The-Future-of-Quantum-Computing.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .welcome-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 1rem;
+        }
+        .welcome-overlay h3 {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .welcome-overlay p {
+            font-size: 1.50rem;
+        }
+
+        /* General Section Styling */
+        section {
+            padding: 4rem 0;
+        }
+        .bg-white {
+            background-color: white;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 3rem;
+        }
+
+        /* About Us Section */
+        #about p {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            color: #555;
+        }
+
+        /* Events Grid */
+        .grid-container {
+            display: grid;
+            gap: 2rem;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        .grid-cols-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .grid-cols-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        /* --- START: NEW EVENT CARD STYLES WITH IMAGE & HOVER EFFECT --- */
+        .card {
+            position: relative;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            overflow: hidden;
+            height: 350px; /* Taller card for better visuals */
+            cursor: pointer;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .card:hover img {
+            transform: scale(1.1); /* Zoom effect on hover */
+        }
+        
+        .card__content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(30, 42, 106, 0.95), rgba(30, 42, 106, 0.6)); /* Gradient overlay */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem;
+            box-sizing: border-box;
+            
+            /* Hidden by default */
+            opacity: 0;
+            transform: translateY(30px); /* Start from a lower position */
+            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+        }
+
+        .card:hover .card__content {
+            opacity: 1;
+            transform: translateY(0); /* Move to original position */
+        }
+
+        .card__title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--hover-yellow); /* Use theme's yellow color */
+            margin: 0 0 0.5rem 0;
+        }
+
+        .card__description {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #f0f0f0;
+            margin: 0;
+        }
+        /* --- END: NEW EVENT CARD STYLES --- */
+
+
+        .member-card {
+            padding: 0.5rem;
+        }
+        .member-image-wrapper {
+            aspect-ratio: 1 / 1;
+        }
+        .member-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0.375rem;
+        }
+
+        /* Registration Form */
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2.5rem;
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #ccc;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(54, 74, 158, 0.2);
+        }
+        .form-submit {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: var(--primary-color-dark);
+        }
+
+        /* Contact Section */
+        #contact .contact-info {
+            text-align: center;
+            color: #555;
+        }
+        #contact .contact-info p {
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+        }
+        #contact .contact-info i {
+            margin-right: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        #contact {
+            padding-bottom: 0.5rem; 
+        }
+
+        #social-icons-section {
+            padding-top: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--footer-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .grid-cols-2, .grid-cols-3 {
+                grid-template-columns: 1fr;
+            }
+            .hero-overlay h2 { font-size: 2rem; }
+            .welcome-overlay h3 { font-size: 1.75rem; }
+            nav ul { flex-direction: column; align-items: center; }
+            nav ul li { margin: 0.5rem 0; }
+        }
+
+        /* --- START: CSS for Glass Member Cards --- */
+        .glass-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 50px;
+            min-height: 400px; 
+        }
+
+        .glass-container .glass {
+            position: relative;
+            width: 240px;      
+            height: 260px;     
+            background: linear-gradient(#fff2, transparent);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 25px rgba(0, 0, 0, 0.25);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.5s;
+            border-radius: 10px;
+            margin: 0 -60px;   
+            backdrop-filter: blur(10px);
+            transform: rotate(calc(var(--r) * 1deg));
+        }
+
+        .glass-container:hover .glass {
+            transform: rotate(0deg);
+            margin: 0 20px;    
+        }
+
+        .glass-container .glass::before {
+            content: attr(data-text);
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 50px;      
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            font-size: 1.2rem; 
+        }
+
+        .glass-container .glass img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        /* --- END: CSS for Glass Member Cards --- */
+
+        /* --- START: CSS for Social Icons --- */
+        #social-icons-section {
+            background: #f8f9fa; /* Match surrounding background */
+        }
+
+        #SocailIcons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px; /* Space between icons */
+        }
+
+        .icons {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            position: relative; /* For tooltip positioning */
+        }
+
+        .iconName {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+            transform-origin: bottom center;
+            font-size: 12px;
+            color: #fff;
+            background: #333; /* Default background */
+            border-radius: 3px;
+            padding: 5px 10px;
+            transition: transform 0.2s ease-in-out;
+            white-space: nowrap; /* Keep name on one line */
+        }
+
+        .icons:hover .iconName {
+            transform: translateX(-50%) scale(1);
+        }
+
+        .icons.instaIcon:hover .iconName { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); }
+        .icons.linkedin:hover .iconName { background: #0077B5; }
+        .icons.whatsapp:hover .iconName { background: #25D366; }
+        .icons.youtube:hover .iconName { background: #FF0000; }
+        
+        .icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: #0c0c0c;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .icon:hover {
+            color: #fff;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+            transform: translateY(-3px);
+        }
+
+        .icon::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            transition: height 0.3s ease;
+            z-index: 0;
+        }
+
+        .icon svg {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .icon:hover::before {
+            height: 100%;
+        }
+        
+        .icon.tube::before { background: #FF0000; }
+        .icon.insta::before { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); }
+        .icon.link::before { background: #0077B5; }
+        .icon.whats::before { background: #25D366; }
+        /* --- END: CSS for Social Icons --- */
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content container">
+            <h1>Quantum Club</h1>
+            <p>C. V. Raman Global University</p>
+        </div>
+        <nav>
+            <div class="container">
+                <ul>
+                    <li><a href="#home"><span>Home</span></a></li>
+                    <li><a href="#about"><span>About</span></a></li>
+                    <li><a href="#events"><span>Events</span></a></li>
+                    <li><a href="#members"><span>Members</span></a></li>
+                    <li><a href="#register"><span>Register</span></a></li>
+                    <li><a href="#contact"><span>Contact</span></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content-wrapper">
+        <section id="home" class="hero-section">
+            <div class="hero-overlay">
+                <h2>Innovating the Future with Quantum Computing</h2>
+                <p>Join the Quantum Club and be part of the next technological revolution</p>
+            </div>
+            <div class="welcome-section">
+                 <div class="welcome-overlay">
+                      <h3>Welcome to Quantum Club</h3>
+                      <p>Exploring the world of Quantum Computing & Emerging technologies</p>
+                 </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">About Us</h2>
+                <p>
+                    The Quantum Club at C. V. Raman Global University is a student-led initiative dedicated to exploring the fascinating world of Quantum Computing, Quantum Mechanics, and related emerging technologies. Our mission is to create awareness, encourage research, and foster collaboration among students and faculty.
+                </p>
+            </div>
+        </section>
+
+        <section id="events" class="bg-white">
+            <div class="container">
+                <h2 class="section-title">Upcoming Events</h2>
+                <div class="grid-container grid-cols-2">
+                    <div class="card">
+                        <img src="./pexels-field-engineer-147254-442150.jpg" alt="Quantum Workshop">
+                        <div class="card__content">
+                            <p class="card__title">Quantum Workshop</p>
+                            <p class="card__description">Hands-on introduction to Quantum Programming with Qiskit.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="./pexels-jibarofoto-2774566.jpg" alt="Guest Seminar">
+                        <div class="card__content">
+                            <p class="card__title">Guest Seminar</p>
+                            <p class="card__description">Talk by industry experts on Quantum Applications in AI.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="members">
+          <div class="container">
+                <h2 class="section-title">Our Members</h2>
+                <div class="glass-container">
+                    <div data-text="Member 1" style="--r:-15;" class="glass">
+                        <img src="pexels-ante-emmanuel-3691197-11883167.jpg" alt="Member 1">
+                    </div>
+                    <div data-text="Member 2" style="--r:5;" class="glass">
+                        <img src="pexels-karlsolano-19067429.jpg" alt="Member 2">
+                    </div>
+                    <div data-text="Member 3" style="--r:25;" class="glass">
+                        <img src="pexels-tkirkgoz-18113260.jpg" alt="Member 3">
+                    </div>
+                </div>
+              </div>
+        </section>
+
+        <section id="register" class="bg-white">
+            <div class="container">
+                <h2 class="section-title">Register for Membership</h2>
+                <div class="form-container">
+                    <form>
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" name="fullName" placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="department">Department</label>
+                            <select id="department" name="department">
+                                <option>-- Select Department --</option>
+                                <option>Computer Science</option>
+                                <option>Physics</option>
+                                <option>Electrical Engineering</option>
+                                <option>Mechanical Engineering</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="reason">Why do you want to join?</label>
+                            <textarea id="reason" name="reason" rows="4" placeholder="Write here..."></textarea>
+                        </div>
+                        <div class="form-submit">
+                            <button type="submit" class="btn-primary">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Contact Us</h2>
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> Email: quantumclub@cgu-odisha.ac.in</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Address: C. V. Raman Global University, Bhubaneswar, Odisha</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="social-icons-section">
+            <div class="container">
+                 <div id="SocailIcons">
+                    <div class="icons instaIcon">
+                        <p class="iconName">Instagram</p>
+                        <div class="icon insta">
+                            <svg viewBox="0 0 24 24" fill="none" height="24" width="24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path clip-rule="evenodd" d="M3 8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Zm5-3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H8Zm7.597 2.214a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2h-.01a1 1 0 0 1-1-1ZM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-5 3a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z" fill-rule="evenodd" fill="currentColor"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="icons linkedin">
+                        <p class="iconName">Linkedin</p>
+                        <div class="icon link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <circle cx="4.983" cy="5.009" r="2.188" fill="currentColor"></circle>
+                                <path d="M9.237 8.855v12.139h3.769v-6.003c0-1.584.298-3.118 2.262-3.118 1.937 0 1.961 1.811 1.961 3.218v5.904H21v-6.657c0-3.27-.704-5.783-4.526-5.783-1.835 0-3.065 1.007-3.568 1.96h-.051v-1.66H9.237zm-6.142 0H6.87v12.139H3.095z" fill="currentColor"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="icons whatsapp">
+                        <p class="iconName">WhatsApp</p>
+                        <div class="icon whats">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M18.403 5.633A8.919 8.919 0 0 0 12.053 3c-4.948 0-8.976 4.027-8.978 8.977 0 1.582.413 3.126 1.198 4.488L3 21.116l4.759-1.249a8.981 8.981 0 0 0 4.29 1.093h.004c4.947 0 8.975-4.027 8.977-8.977a8.926 8.926 0 0 0-2.627-6.35m-6.35 13.812h-.003a7.446 7.446 0 0 1-3.798-1.041l-.272-.162-2.824.741.753-2.753-.177-.282a7.448 7.448 0 0 1-1.141-3.971c.002-4.114 3.349-7.461 7.465-7.461a7.413 7.413 0 0 1 5.275 2.188 7.42 7.42 0 0 1 2.183 5.279c-.002 4.114-3.349 7.462-7.461 7.462m4.093-5.589c-.225-.113-1.327-.655-1.533-.73-.205-.075-.354-.112-.504.112s-.58.729-.711.879-.262.168-.486.056-.947-.349-1.804-1.113c-.667-.595-1.117-1.329-1.248-1.554s-.014-.346.099-.458c.101-.1.224-.262.336-.393.112-.131.149-.224.224-.374s.038-.281-.019-.393c-.056-.113-.505-1.217-.692-1.666-.181-.435-.366-.377-.504-.383a9.65 9.65 0 0 0-.429-.008.826.826 0 0 0-.599.28c-.206.225-.785.767-.785 1.871s.804 2.171.916 2.321c.112.15 1.582 2.415 3.832 3.387.536.231.954.369 1.279.473.537.171 1.026.146 1.413.089.431-.064 1.327-.542 1.514-1.066.187-.524.187-.973.131-1.067-.056-.094-.207-.151-.43-.263" fill="currentColor"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="icons youtube">
+                        <p class="iconName">YouTube</p>
+                        <div class="icon tube">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M21.593 7.203a2.506 2.506 0 0 0-1.762-1.766C18.265 5.007 12 5 12 5s-6.264-.007-7.831.404a2.56 2.56 0 0 0-1.766 1.778c-.413 1.566-.417 4.814-.417 4.814s-.004 3.264.406 4.814c.23.857.905 1.534 1.763 1.765 1.582.43 7.83.437 7.83.437s6.265.007 7.831-.403a2.515 2.515 0 0 0 1.767-1.763c.414-1.565.417-4.812.417-4.812s.02-3.265-.407-4.831zM9.996 15.005l.005-6 5.207 3.005-5.212 2.995z" fill="currentColor"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Quantum Club, C. V. Raman Global University. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
